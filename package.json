@@ -1,0 +1,24 @@
+{
+  "name": "nestable",
+  "version": "1.0.0",
+  "description": "Drag & drop hierarchical list with mouse and touch compatibility",
+  "keywords": [
+    "drag",
+    "drop",
+    "mouse",
+    "hierarchical list",
+    "tree"
+  ],
+  "repository": "git@github.com:AlexPavlof/Nestable.git",
+  "author": "David Bushell <hi@dbushell.com>",
+  "contributors": [
+    {
+      "name": "Alex Pavlov",
+      "email": "aleksey.pavlof@gmail.com"
+    }
+  ],
+  "homepage": "http://dbushell.github.io/Nestable/",
+  "license": "MIT",
+  "readme": "README.md",
+  "main": "index.js"
+}
