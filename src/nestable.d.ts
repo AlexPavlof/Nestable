@@ -1,0 +1,18 @@
+type Options = {
+    listNodeName?: string,
+    itemNodeName?: string,
+    rootClass?: string,
+    listClass?: string,
+    itemClass?: string,
+    dragClass?: string,
+    handleClass?: string,
+    collapsedClass?: string,
+    placeClass?: string,
+    noDragClass?: string,
+    emptyClass?: string,
+    expandBtnHTML?: string,
+    collapseBtnHTML?: string,
+    group?: number,
+    maxDepth?: number,
+    threshold?: number,
+};

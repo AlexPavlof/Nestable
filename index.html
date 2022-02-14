@@ -263,17 +263,14 @@ p { line-height: 1.5em; }
 
     <p class="small">Copyright &copy; <a href="https://dbushell.com/">David Bushell</a> | Made for <a href="http://www.browserlondon.com/">Browser</a></p>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="jquery.nestable.js"></script>
+<script type="module" src="src/main.ts"></script>
 <script>
 
-$(document).ready(function()
-{
+document.addEventListener('DOMContentLoaded', () => {
+    const updateOutput = (e) => {
+        const list = e.length ? e : e.target;
+        let output = list.dataset.output;
 
-    var updateOutput = function(e)
-    {
-        var list   = e.length ? e : $(e.target),
-            output = list.data('output');
         if (window.JSON) {
             output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
         } else {
@@ -281,37 +278,68 @@ $(document).ready(function()
         }
     };
 
-    // activate Nestable for list 1
-    $('#nestable').nestable({
-        group: 1
-    })
-    .on('change', updateOutput);
+    document
+        .querySelectorAll('#nestable-menu button')
+        .forEach((element) => {
+            element.addEventListener('click', ({ target }) => {
+                const action = target.dataset.action;
+                
+                if (action === 'expand-all') {
+                    // $('.dd').nestable('expandAll');
+                }
 
-    // activate Nestable for list 2
-    $('#nestable2').nestable({
-        group: 1
-    })
-    .on('change', updateOutput);
-
-    // output initial serialised data
-    updateOutput($('#nestable').data('output', $('#nestable-output')));
-    updateOutput($('#nestable2').data('output', $('#nestable2-output')));
-
-    $('#nestable-menu').on('click', function(e)
-    {
-        var target = $(e.target),
-            action = target.data('action');
-        if (action === 'expand-all') {
-            $('.dd').nestable('expandAll');
-        }
-        if (action === 'collapse-all') {
-            $('.dd').nestable('collapseAll');
-        }
-    });
-
-    $('#nestable3').nestable();
-
+                if (action === 'collapse-all') {
+                    // $('.dd').nestable('collapseAll');
+                }
+            });
+        });
 });
+
+// $(document).ready(function()
+// {
+
+//     var updateOutput = function(e)
+//     {
+//         var list   = e.length ? e : $(e.target),
+//             output = list.data('output');
+//         if (window.JSON) {
+//             output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+//         } else {
+//             output.val('JSON browser support required for this demo.');
+//         }
+//     };
+
+//     // activate Nestable for list 1
+//     $('#nestable').nestable({
+//         group: 1
+//     })
+//     .on('change', updateOutput);
+
+//     // activate Nestable for list 2
+//     $('#nestable2').nestable({
+//         group: 1
+//     })
+//     .on('change', updateOutput);
+
+//     // output initial serialised data
+//     updateOutput($('#nestable').data('output', $('#nestable-output')));
+//     updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+
+//     $('#nestable-menu').on('click', function(e)
+//     {
+//         var target = $(e.target),
+//             action = target.data('action');
+//         if (action === 'expand-all') {
+//             $('.dd').nestable('expandAll');
+//         }
+//         if (action === 'collapse-all') {
+//             $('.dd').nestable('collapseAll');
+//         }
+//     });
+
+//     $('#nestable3').nestable();
+
+// });
 </script>
 </body>
 </html>
